@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
+{% block title %} {{ job.title}} | job-page {% endblock %}
 {% block content %}
     <!-- header section -->
     <div class="w-full flex justify-center bg-cover bg-center bg-black relative"  style=" background-image: url('{% static "images/job-bg.jpg" %}'); " >
