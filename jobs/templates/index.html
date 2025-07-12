@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{request.url}}</title>
     <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
     <script src="https://unpkg.com/htmx.org@1.9.6"></script>
     {% include 'links.html' %}
@@ -33,32 +33,37 @@
                 <div class=" w-full 
                             sm:w-2/3 sm:flex sm:flex-col    ">
                     <!-- search field -->
-                     <form method="get" class="pl-4 pr-4 md:p-0 ">
+                     <form method="get" class="pl-4 pr-4 mb-4 md:p-0 ">
                         <input class="w-full p-4 border-1 border-[#DADADA] bg-[#F5F5F5] rounded-md 
                                       sm:m-0 " type="text" name="search" placeholder="search job">
                      </form>
                     <!-- job container -->
                      {% for job in jobs %}
-                     <div class="w-full flex flex-col p-4 gap-4 border-b-1 border-[#DADADA]" >
-                        <div class="w-full flex justify-between">
-                            <h2 class="text-2xl font-bold text-black "> <a href="{% url 'job-detail' job.slug %}">  {{ job.title }} </a> </h2>
-                            <a href="{% url 'add_saved' job.id %}">
-                                {% if request.user in job.saved.all %}
-                                    <i class="bi bi-heart-fill text-xl text-[#0A96DE]"></i>
-                                {% else %}
-                                    <i class="bi bi-heart text-xl"></i>
-                                {% endif %}
-                            </a>
-                        </div>                        
-                        <div class="flex flex-row gap-3"> 
-                            <div class="flex flex-row gap-1.5"> <i class="bi bi-clock text-[#0A96DE] text-xl"></i> <p> {{ job.job_type }}</p> </div>
-                            <div class="flex flex-row gap-1.5"> <i class="bi bi-geo-alt text-[#0A96DE] text-xl"></i> <p>{{ job.work_location }}</p> </div>
-                            <div class="flex flex-row gap-1.5 "> <i class="bi bi-grid text-[#0A96DE] text-xl "></i> <p>{{ job.categories }}</p> </div>
-                        </div>
-                        <p>  {{ job.description|truncatechars:200 }} </p>
-                        <p> Posted <span class="font-semibold"> {{ job.date_posted|date:"d M Y" }} </span> </p>
-
+                     <a href="{% url 'job-detail' job.slug %}">
+                     <div class="w-full flex flex-col p-4 gap-4 border-b-1 border-[#DADADA] hover:bg-[#F5F5F5]" >
+                        
+                            <div class="w-full flex justify-between">
+                                <h2 class="text-2xl font-bold text-black hover:text-[#0A96DE]"> {{ job.title }} </h2>
+                                <form method="" action="{% url 'add_saved' job.id %}"  onclick="event.stopPropagation(); this.submit();" >
+                                    <button type="submit">
+                                    {% if request.user in job.saved.all %}
+                                        <i class="bi bi-heart-fill text-xl text-[#0A96DE]"></i>
+                                    {% else %}
+                                        <i class="bi bi-heart text-xl"></i>
+                                    {% endif %}
+                                    </button>
+                                </form>
+                            </div>                        
+                            <div class="flex flex-row gap-3"> 
+                                <div class="flex flex-row gap-1.5"> <i class="bi bi-clock text-[#0A96DE] text-xl"></i> <p> {{ job.job_type }}</p> </div>
+                                <div class="flex flex-row gap-1.5"> <i class="bi bi-geo-alt text-[#0A96DE] text-xl"></i> <p>{{ job.work_location }}</p> </div>
+                                <div class="flex flex-row gap-1.5 "> <i class="bi bi-grid text-[#0A96DE] text-xl "></i> <p>{{ job.categories }}</p> </div>
+                            </div>
+                            <p>  {{ job.description|truncatechars:200 }} </p>
+                            <p> Posted <span class="font-semibold"> {{ job.date_posted|date:"d M Y" }} </span> </p>
+                        
                      </div>
+                     </a>
                         {% empty %}
                             <i class="bi bi-box-seam"></i>
                             <p> They are no Jobs</p>
