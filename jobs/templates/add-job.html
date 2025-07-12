@@ -1,0 +1,37 @@
+{% load static %}
+{% include 'links.html' %}
+{% load tailwind_filters %}
+{% include 'partials/navbar.html' %}
+
+<div class="w-full pt-30 flex justify-center">
+
+
+    <div class="w-full md:w-6xl"> 
+
+        <h1 class="text-4xl font-bold w-full text-center pb-4 "> Upload a Job </h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.title|as_crispy_field }}
+            {{ form.description|as_crispy_field }}
+            {{ form.company_name|as_crispy_field }}
+            <div class="w-full sm:flex sm:flex-row gap-4"> 
+                <div class="w-full">
+                    {{ form.job_type|as_crispy_field }}
+                </div>
+                <div class="w-full">
+                    {{ form.work_location|as_crispy_field }}
+                </div>
+            </div>
+            {{ form.categories|as_crispy_field }}
+            {{ form.core_tasks|as_crispy_field }}
+            {{ form.requirements|as_crispy_field }}
+            {{ form.benefits|as_crispy_field }}
+            {{ form.contact_info|as_crispy_field }}
+
+            <button class="w-full pt-4 pb-4 font-bold bg-[#0BA5F4] text-white rounded-md cursor-pointer"> Upload Job </button>
+        </form>
+    </div>
+</div>
+
+
+{% include 'partials/footer.html' %}

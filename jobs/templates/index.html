@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    {% include 'links.html' %}
+</head>
+<body>
+
+    <!-- navbar -->
+    {% include 'partials/navbar.html' %}
+    {% block content %}
+    <!-- hero section -->
+    <div class="w-full flex justify-center bg-center bg-cover" style="background-image: url('{% static "images/warri.jpg" %}')">
+        <div class="w-full pb-20 pt-30 pl-4 pr-4
+                    sm:w-6xl sm:pb-30 sm:pt-50  " >
+        <h1 class="text-white font-bold text-4xl 
+                    sm:text-6xl                "> Start Your Job <br> Search Today.</h1>
+        </div>
+    </div>
+
+    <!-- Job section -->
+    <div class="w-full flex justify-center pt-10" > 
+        <div class="w-full
+                    sm:w-6xl sm:max-lg:pr-4 sm:max-lg:pl-4       ">
+            <div class="flex justify-between w-full gap-4" >
+                <!-- div left -->
+                <div class=" w-full 
+                            sm:w-2/3 sm:flex sm:flex-col    ">
+                    <!-- search field -->
+                     <form method="get" class="pl-4 pr-4 md:p-0 ">
+                        <input class="w-full p-4 border-1 border-[#DADADA] bg-[#F5F5F5] rounded-md 
+                                      sm:m-0 " type="text" name="search" placeholder="search job">
+                     </form>
+                    <!-- job container -->
+                     {% for job in jobs %}
+                     <div class="w-full flex flex-col p-4 gap-4 border-b-1 border-[#DADADA]" >
+                        <div class="w-full flex justify-between">
+                            <h2 class="text-2xl font-bold text-black "> <a href="{% url 'job-detail' job.slug %}">  {{ job.title }} </a> </h2>
+                            <a href="{% url 'add_saved' job.id %}">
+                                {% if request.user in job.saved.all %}
+                                    <i class="bi bi-heart-fill text-xl text-[#0A96DE]"></i>
+                                {% else %}
+                                    <i class="bi bi-heart text-xl"></i>
+                                {% endif %}
+                            </a>
+                        </div>                        
+                        <div class="flex flex-row gap-3"> 
+                            <div class="flex flex-row gap-1.5"> <i class="bi bi-clock text-[#0A96DE] text-xl"></i> <p> {{ job.job_type }}</p> </div>
+                            <div class="flex flex-row gap-1.5"> <i class="bi bi-geo-alt text-[#0A96DE] text-xl"></i> <p>{{ job.work_location }}</p> </div>
+                            <div class="flex flex-row gap-1.5 "> <i class="bi bi-grid text-[#0A96DE] text-xl "></i> <p>{{ job.categories }}</p> </div>
+                        </div>
+                        <p>  {{ job.description|truncatechars:200 }} </p>
+                        <p> Posted <span class="font-semibold"> {{ job.date_posted|date:"d M Y" }} </span> </p>
+
+                     </div>
+                        {% empty %}
+                            <i class="bi bi-box-seam"></i>
+                            <p> They are no Jobs</p>
+                      {% endfor %}
+                </div>
+                <!-- div right -->
+                <div class=" hidden
+                            sm:w-1/3 sm:flex sm:flex-col sm:gap-4 ">
+                    <!-- Signup-box -->
+
+                     {% if user.is_authenticated  %}
+                     {% else %}
+                     <div class="w-full flex flex-col p-4 gap-2 bg-slate-100 rounded-md ">
+                        <h2 class="text-2xl font-bold">Get the Latest Job alerts </h2>
+                        <a href="{% url 'register' %}" class="w-full bg-[#0BA5F4] p-2 text-center font-bold text-white rounded-md"> Sign up for free </a>
+                     </div>
+                     {% endif %}
+                    <!-- Category-box -->
+                     <div class="w-full flex flex-col p-4 gap-2 bg-slate-100 rounded-md">
+                        <h2 class="text-2xl font-bold">Select categories</h2>
+                        {% for category, label in categories %}
+                        <p> <a href="?search={{ category }}"> {{ category }} </a> </p>
+                        {% endfor %}
+                     </div>
+                    <!-- Conatct-box -->
+                     <div class="w-full flex flex-col p-4 gap-2 bg-[#E7F6FE] rounded-md ">
+                        <h2 class="text-2xl font-bold">Contact us to upload a Job </h2>
+                        <div class="flex flex-row gap-1.5"> <i class="bi bi-whatsapp text-xl"></i> <p class="text-black"> Whatsapp </p> </div>
+                        <div class="flex flex-row gap-1.5"> <i class="bi bi-envelope text-xl"></i> <p class="text-black"> Email </p> </div>
+                     </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+    {% include 'links.html' %}
+    {% include 'partials/footer.html' %}
+</body>
+</html>

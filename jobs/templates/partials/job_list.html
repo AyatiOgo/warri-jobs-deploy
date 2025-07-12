@@ -1,0 +1,45 @@
+{% for job in jobs %}
+    <div class="w-full flex flex-col p-4 gap-4 border-b-1 border-[#DADADA]" >
+            <div class="w-full flex justify-between">
+                <h2 class="text-2xl font-bold text-black "> <a href="{% url 'job-detail' job.slug %}">  {{ job.title }} </a> </h2>
+                <a href="{% url 'add_saved' job.id %}">
+                {% if request.user in job.saved.all %}
+                    <i class="bi bi-heart-fill text-xl text-[#0A96DE]"></i>
+                {% else %}
+                    <i class="bi bi-heart text-xl"></i>
+                {% endif %}
+                </a>
+            </div>                        
+            <div class="flex flex-row gap-3"> 
+                <div class="flex flex-row gap-1.5"> <i class="bi bi-clock text-[#0A96DE] text-xl"></i> <p> {{ job.job_type }}</p> </div>
+                <div class="flex flex-row gap-1.5"> <i class="bi bi-geo-alt text-[#0A96DE] text-xl"></i> <p>{{ job.work_location }}</p> </div>
+                <div class="flex flex-row gap-1.5 "> <i class="bi bi-grid text-[#0A96DE] text-xl "></i> <p>{{ job.categories }}</p> </div>
+            </div>
+            <p>  {{ job.description|truncatechars:200 }} </p>
+            <p> Posted <span class="font-semibold"> {{ job.date_posted|date:"d M Y" }} </span> </p>
+    </div>
+    {% empty %}
+        <i class="bi bi-box-seam"></i>
+        <p> They are no Jobs</p>
+{% endfor %}
+
+
+<!-- Paginator  -->
+<div class="w-full flex flex-row justify-end pt-4 align-middle" > 
+    <div class="pagination flex flex-row gap-2">
+        <a href="?page=1" class="text-[#8F9191] italic" > First</a>
+    {% if job_pages.has_previous %}
+        <a href="?page={{ job_pages.previous_page_number }}" class="pt-1 pb-1 pl-2 pr-2 bg-black text-white rounded-md text-1xl ">Prev</a>
+        {% else %}
+        <p class="pt-1 pb-1 pl-2 pr-2 bg-[#F5F5F5] text-[#8F9191] rounded-md text-1xl " > Prev</p>
+    {% endif %}
+    {% if job_pages.has_next %}
+        <a href="?page={{ job_pages.next_page_number }}" class="pt-1 pb-1 pl-2 pr-2 bg-black text-white rounded-md text-1xl " >Next</a>
+        {% else %}
+        <p class="pt-1 pb-1 pl-2 pr-2 bg-[#F5F5F5] text-[#8F9191] rounded-md text-1xl " > Next </p>
+    {% endif %}
+        <a href="?page={{job_pages.paginator.num_pages}}" class="text-[#8F9191] italic" > Last</a>
+    </div>
+</div>
+
+</div>

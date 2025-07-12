@@ -1,0 +1,42 @@
+{% load static %}
+{% load tailwind_filters %}
+{% include 'links.html' %}
+
+{% include 'partials/navbar.html' %}
+
+
+
+
+<!-- Page Container -->
+<div class="w-full flex flex-row">
+    <!-- content-lext(page banner) -->
+     <div class=" hidden w-full sm:hidden  md:max-lg:hidden h-lvh bg-center bg-cover relative md:flex  flex-col justify-center " style=" background-image: url('{% static "images/form-bg.jpg" %}'); " >
+         <!-- background overlay -->
+         <div class="absolute w-full h-full bg-black/50 z-0 " > </div>
+        <!-- banner text -->
+         <div class="w-full p-50 z-10 flex flex-col gap-4">
+            <h1 class="text-6xl text-white font-bold"> Welcome to Warri Jobs </h1>
+            <p class="text-white text-2xl font-semibold" > The Number one place to find Job opportunities in Delta State </p>
+         </div>
+     </div>
+
+     <!-- content right(form field) -->
+      <div class="w-full " >
+        <div class="w-full flex flex-col  pt-30 pl-4 pr-4 sm:pb-20 sm:pl-20 sm:pr-20 sm:pt-30 gap-4  ">
+            <div class=" flex flex-col gap-2">
+                 <h1 class="text-4xl text-black font-bold" > Login </h1>
+                 <p class="text-gray-600 ">Create an account to access extra features today</p>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class=" w-full flex flex-col gap-2 items-center">
+                <button type="submit" class="w-full p-4 bg-[#0A96DE] text-white font-bold rounded-md "> Login </button>
+                <p>Don’t have an account? <a href=" {% url 'register' %}" class="font-bold text-[#0A96DE] ">Create an account</a> </p>
+                </div>
+            </form>
+        </div>
+      </div>
+
+</div>
+

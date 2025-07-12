@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<!-- page wrapper -->
+ <div class="w-full flex justify-center pt-30"> 
+    <div class="w-3xl"> 
+        <h2 class="text-3xl font-bold pb-5 border-b-1 border-gray-300">Saved Jobs</h2>
+        <!-- Saved Jobs list -->
+         {% for job in jobs %}
+    <div class="w-full flex flex-col p-4 gap-4 border-b-1 border-[#DADADA]" >
+            <div class="w-full flex justify-between">
+                <h2 class="text-2xl font-bold text-black "> <a href="{% url 'job-detail' job.slug %}">  {{ job.title }} </a> </h2>
+                {% if request.user in job.saved.all %}
+                <i class="bi bi-heart-fill text-xl text-[#0A96DE]"></i>
+                {% else %}
+                <i class="bi bi-heart text-xl"></i>
+                {% endif %}
+            </div>                        
+            <div class="flex flex-row gap-3"> 
+                <div class="flex flex-row gap-1.5"> <i class="bi bi-clock text-[#0A96DE] text-xl"></i> <p> {{ job.job_type }}</p> </div>
+                <div class="flex flex-row gap-1.5"> <i class="bi bi-geo-alt text-[#0A96DE] text-xl"></i> <p>{{ job.work_location }}</p> </div>
+                <div class="flex flex-row gap-1.5 "> <i class="bi bi-grid text-[#0A96DE] text-xl "></i> <p>{{ job.categories }}</p> </div>
+            </div>
+            <p>  {{ job.description|truncatechars:200 }} </p>
+            <p> Posted <span class="font-semibold"> {{ job.date_posted|date:"d M Y" }} </span> </p>
+    </div>
+    {% empty %}
+        <i class="bi bi-box-seam"></i>
+        <p> You have no saved Jobs</p>
+        {% endfor %}
+            </div>
+    
+ </div>
+{% endblock %}
+
