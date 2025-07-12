@@ -7,9 +7,9 @@
          <div class="absolute w-full h-full bg-black/50 z-0" >
 
          </div>
-        <div class="w-6xl pb-30 pt-40 z-10" >
+        <div class="w-full pb-30 pt-30 z-10 md:w-6xl md:pb-30 md:pt-40  " >
             <div  class="w-full flex flex-col items-center gap-4" >
-                <h1 class="text-white font-bold text-5xl "> {{ job.title }} </h1>
+                <h1 class="text-white font-bold text-3xl md:text-5xl "> {{ job.title }} </h1>
                 <div class="flex flex-row gap-3"> 
                     <div class="flex flex-row gap-1.5"> <i class="bi bi-clock text-[#0A96DE] text-xl"></i> <p class="font-semibold text-white"> {{ job.job_type }}</p> </div>
                     <div class="flex flex-row gap-1.5"> <i class="bi bi-geo-alt text-[#0A96DE] text-xl"></i> <p class="font-semibold text-white" >{{ job.work_location }}</p> </div>
