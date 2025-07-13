@@ -1,26 +1,12 @@
 {% load static %}
-
-<!-- navbar -->
-     <!-- <div class="w-full flex justify-center fixed bg-white z-100">
-        <div class="w-6xl">
-            <div class="w-full flex flex-row justify-between p-4 ">
-               <a href="{% url 'home' %}"> <img src="{% static 'images/wj-logo.png' %}" alt="" srcset=""> </a>
-                <div class="flex flex-row gap-4 items-center">
-                    <a href="#">About us</a>
-                    <a href="#">contact us</a>                 
-
-                    {% if user.is_authenticated %}
-                    <div class="flex flex-row gap-4">
-                        <div class=" flex flex-row gap-2 justify-center items-center"> <i class="bi bi-heart text-[#0A96DE] text-2xl"></i> <a href="{% url 'saved' %}" class=" text-black font-semibold"> Saved</a> </div>
-                        <div> <a href="#" class="bg-[#E7F6FE] pt-2 pb-2 pl-4 pr-4 text-black  font-bold rounded-md flex flex-row items-center gap-2"> <i class="bi bi-person-circle text-[#0A96DE] text-2xl"></i> {{ user.full_name }}  </a> </div>
-                    </div>
-                    {% else %}
-                    <a href="{% url 'register' %}" class="bg-[#0A96DE] pt-2 pb-2 pl-4 pr-4 text-white rounded-md"> Sign up/Login</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-     </div> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+    {% include 'links.html' %}
+</head>
 
     <div class="w-full flex justify-center fixed bg-white z-[100]">
   <div class="w-6xl">
