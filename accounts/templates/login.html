@@ -1,8 +1,17 @@
 {% load static %}
 {% load tailwind_filters %}
-{% include 'links.html' %}
-{% include 'partials/navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+    {% include 'links.html' %}
+</head>
 
+<body>
+
+{% include 'partials/navbar.html' %}
 
 <!-- Page Container -->
 <div class="w-full flex flex-row">
@@ -36,3 +45,4 @@
       </div>
 
 </div>
+</body>

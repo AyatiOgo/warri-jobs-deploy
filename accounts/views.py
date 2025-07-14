@@ -3,11 +3,14 @@ from .forms import RegularUserCreationForm, RegularUSerLoginForm
 from django.contrib.auth import login, logout, authenticate
 from jobs.models import JobsModel
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from jobBoard.settings import DEFUALT_FROM_EMAIL
+
 
 # Create your views here.
 
 def userRegistrationView(request):
-    
     if request.method == 'POST':
         form = RegularUserCreationForm(request.POST)
         if form.is_valid():
@@ -16,9 +19,7 @@ def userRegistrationView(request):
             return redirect('home')
     else: 
         form = RegularUserCreationForm()
-    
     context = {'form' : form}
-
     return render(request, 'register.html', context)
 
 

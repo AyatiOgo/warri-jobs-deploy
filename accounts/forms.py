@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 class RegularUserCreationForm(UserCreationForm):
     class Meta:
         model = RegularUSer
-        fields = ['full_name', 'email', 'phone', 'password1', 'password2']
+        fields = ['username','full_name', 'email', 'phone', 'password1', 'password2']
         # full_name=forms.CharField(max_length=100, label="Name")
         # email=forms.EmailField(max_length=100, label="Name")
         # phone=forms.CharField(max_length=20, label="Name")
