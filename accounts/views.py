@@ -3,7 +3,7 @@ from .forms import RegularUserCreationForm, RegularUSerLoginForm
 from django.contrib.auth import login, logout, authenticate
 from jobs.models import JobsModel
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
 from jobBoard.settings import DEFUALT_FROM_EMAIL
 
@@ -16,6 +16,16 @@ def userRegistrationView(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            plain_message = f'Hello {user.full_name} welcome to Warri Jobs '
+            html_messgae = render_to_string('email-template.html', {'user':user})
+            email = EmailMessage(
+                subject='Welcome to Warri Jobs',
+                body=html_messgae,
+                from_email=DEFUALT_FROM_EMAIL,
+                to=[user.email],
+            )
+            email.content_subtype = "plain"  # just to be safe
+            email.send(fail_silently=False)
             return redirect('home')
     else: 
         form = RegularUserCreationForm()
