@@ -6,45 +6,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Template</title>
-    {% include 'links.html' %}
 </head>
-<body>
-    <div class="w-full bg-[#F5F5F5] flex justify-center sm:p-20">
-        <div class="w-full sm:w-4xl bg-white">
-            <!-- head -->
-            <div class="w-full p-4">
-                <div class="w-full flex justify-center bg-center bg-cover flex-col items-center pt-8 pb-8 sm:pt-12 sm:pb-12 relative" style="background-image: url('{% static "images/warri.jpg" %}')">
-                <div class="absolute w-full h-full bg-black/50 z-0" ></div>
-                <div class="z-20 flex flex-col gap-4 items-center">
-                    <h1 class="text-white font-bold text-2xl sm:text-4xl"> Welcome To <h1>
-                    <img src="{% static 'images/wj-white.png' %}" alt="">
-                 </div>
-                </div>
+<body style="margin: 0; padding: 0; background-color: #F5F5F5; font-family: Arial, sans-serif;">
+
+  <div style="width: 100%; background-color: #F5F5F5; padding: 20px 0;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 700px; margin: 0 auto; background-color: #ffffff;">
+      <tr>
+        <td style="padding: 0;">
+
+          <!-- Header Section -->
+          <div style="width: 100%; max-width: 700px; margin: 0 auto; position: relative; background-image: url('{% static "images/warri.jpg" %}'); background-size: cover; background-position: center; text-align: center;">
+            <div style="background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></div>
+            <div style="position: relative; z-index: 2; padding: 40px 20px;">
+              <h1 style="color: white; font-size: 32px; font-weight: bold; margin: 0;">Welcome To</h1>
+              <img src="{% static 'images/wj-white.png' %}" alt="Warri Jobs Logo" style="margin-top: 10px; max-width: 200px;">
             </div>
-            <!-- text -->
-            <div class="w-full p-4 sm:pr-20 sm:pl-20 sm:pt-8 sm:pb-12">
+          </div>
+
+          <!-- Text Section -->
+          <div style="padding: 32px 20px; font-size: 16px; line-height: 1.6; color: #333333; box-sizing: border-box;">
             <p>
-                Hi {{ user.full_name }} <br>
-                Welcome to Warri Jobs — we're thrilled to have you join our growing community!
-                Our mission is simple: to connect job seekers like you with real, up-to-date opportunities in Warri and across Delta State. Whether you're actively job hunting or just browsing for the next big move, we're here to support your journey every step of the way. <br>
-                <br>
-                Keep an eye on your inbox for:
-                <li>Fresh job listings tailored to your interests </li>
-                <li>Tips to improve your job search</li>
-                <li>Insider updates and features to help you stand out</li>
-                <br>
-                If you ever need help or have questions, our support team is always here for you. Let’s work together to bring your career goals closer to reality! <br>
-                
-                Warm regards,<br>
-                Warri Jobs Team
+              Hi {{ user.full_name }},<br><br>
+              Welcome to <strong>Warri Jobs</strong> — we're thrilled to have you join our growing community!
+              Our mission is simple: to connect job seekers like you with real, up-to-date opportunities in Warri and across Delta State.
+              Whether you're actively job hunting or just browsing for the next big move, we're here to support your journey every step of the way.
             </p>
-            </div>
-            <!-- footer -->
-            <div class="w-full flex flex-col justify-center items-center p-4 sm:pr-20 sm:pl-20 pt-8 pb-12 bg-[#0A96DE]  text-white">
-                <p>Email : hello@warrijobs.com</p>
-                <p class="text-center">Copyright © 2025. All Rights Reserved</p>
-            </div>
-        </div>
-    </div>
+
+            <p>Keep an eye on your inbox for:</p>
+            <ul style="padding-left: 20px;">
+              <li>Fresh job listings tailored to your interests</li>
+              <li>Tips to improve your job search</li>
+              <li>Insider updates and features to help you stand out</li>
+            </ul>
+
+            <p>
+              If you ever need help or have questions, our support team is always here for you.
+              Let’s work together to bring your career goals closer to reality!
+            </p>
+
+            <p>Warm regards,<br>Warri Jobs Team</p>
+          </div>
+
+          <!-- Footer Section -->
+          <div style="width: 100%; background-color: #0A96DE; color: white; text-align: center; padding: 24px 20px; box-sizing: border-box;">
+            <p style="margin: 0;">Email: hello@warrijobs.com</p>
+            <p style="margin: 4px 0 0;">Copyright © 2025. All Rights Reserved</p>
+          </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
 </body>
-</html>
+
+

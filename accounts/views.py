@@ -17,14 +17,14 @@ def userRegistrationView(request):
             user = form.save()
             login(request, user)
             plain_message = f'Hello {user.full_name} welcome to Warri Jobs '
-            html_messgae = render_to_string('email-template.html', {'user':user})
+            html_message = render_to_string('email-template.html', {'user':user})
             email = EmailMessage(
                 subject='Welcome to Warri Jobs',
-                body=html_messgae,
+                body=html_message,
                 from_email=DEFUALT_FROM_EMAIL,
                 to=[user.email],
             )
-            email.content_subtype = "plain"  # just to be safe
+            email.content_subtype = "html"  # just to be safe
             email.send(fail_silently=False)
             return redirect('home')
     else: 
