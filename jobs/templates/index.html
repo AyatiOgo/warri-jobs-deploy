@@ -43,12 +43,12 @@
                         
                             <div class="w-full flex justify-between">
                                 <h2 class="text-2xl font-bold text-black hover:text-[#0A96DE]"> {{ job.title }} </h2>
-                                <form method="" class="cursor-pointer" action="{% url 'add_saved' job.id %}"  onclick="event.stopPropagation(); this.submit();" >
+                                <form method="" action="{% url 'add_saved' job.id %}"  onclick="event.stopPropagation(); this.submit();" >
                                     <button type="submit">
                                     {% if request.user in job.saved.all %}
-                                        <i class="bi bi-heart-fill text-xl text-[#0A96DE]"></i>
+                                        <i class="bi bi-heart-fill text-xl cursor-pointer text-[#0A96DE]"></i>
                                     {% else %}
-                                        <i class="bi bi-heart text-xl"></i>
+                                        <i class="bi bi-heart cursor-pointer text-xl"></i>
                                     {% endif %}
                                     </button>
                                 </form>
