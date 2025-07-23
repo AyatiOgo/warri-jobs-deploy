@@ -40,7 +40,7 @@
                 {% csrf_token %}
                 {{ form|crispy }}
 
-                <button type="submit" class="p-4 w-full rounded-md bg-[#0A96DE] text-white font-bold"> Create account </button>
+                <button type="submit" class="p-4 w-full rounded-md bg-[#0A96DE] text-white font-bold cursor-pointer "> Create account </button>
                 <p>Have an account?  <a href="{% url 'login' %}" class="font-bold">Login</a> </p>
             </form>
         </div>
