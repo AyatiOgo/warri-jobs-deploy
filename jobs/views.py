@@ -101,7 +101,7 @@ def add_job_view(request):
         form = JobForm()
     return render(request, "add-job.html", {'form':form})
 
-def emailView(request):
+def aboutview(request):
 
-    return render(request, 'email-template.html')
+    return render(request, 'about.html')
 
