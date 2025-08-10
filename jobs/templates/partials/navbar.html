@@ -16,7 +16,7 @@
       <!-- Menu Items -->
       <div id="menu" class="w-full md:max-lg:hidden  sm:hidden md:flex flex-col sm:flex-row gap-4 items-start md:items-center mt-4 md:mt-0 hidden sm:justify-end">
         <div class="flex flex-col sm:flex-row gap-4 pb-5 sm:pb-0">
-        <a href="#">About us</a>
+        <a href="{% url 'about' %}">About us</a>
         <a href="#contactus">Contact us</a>
         </div>
         {% if user.is_authenticated %}
