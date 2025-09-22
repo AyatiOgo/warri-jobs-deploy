@@ -42,6 +42,7 @@ class JobsModel(models.Model):
     benefits = models.TextField(max_length=1500, null=True, blank=True)
     contact_info = models.CharField(max_length=1500)
     saved = models.ManyToManyField(RegularUSer, related_name='saved', blank=True )
+    job_link = models.URLField(default="#")
 
     def __str__(self):
         return self.title
