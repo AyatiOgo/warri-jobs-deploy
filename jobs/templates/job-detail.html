@@ -60,8 +60,18 @@
              {% endif %}
              <div class="w-full flex flex-col gap-2 border-1 border-[#B3E3FC] bg-[#E7F6FE] p-5 rounded-xl ">
                 <h2 class="font-bold text-[#0A96DE] text-3xl">Contact Information</h2>
-                <div class="flex flex-row gap-1.5"> <i class="bi bi-building text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.company_name }}</p> </div>
-                <div class="flex flex-row gap-1.5"> <i class="bi bi-envelope text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.contact_info}} </p> </div>
+                <div class="w-full flex justify-between">
+                  <div>
+                     <div class="flex flex-row gap-1.5"> <i class="bi bi-building text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.company_name }}</p> </div>
+                     <div class="flex flex-row gap-1.5"> <i class="bi bi-envelope text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.contact_info}} </p> </div>
+                  </div>
+                  <div>
+                     <a href="#" class="bg-[#0A96DE] py-2 px-4 text-white rounded-md w-full md:w-auto text-center">
+                     Contact Company
+                     </a>
+                  </div>
+                  
+                </div>
              </div>
         </div>
      </div>
