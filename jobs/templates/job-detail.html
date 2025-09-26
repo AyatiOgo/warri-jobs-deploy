@@ -9,8 +9,8 @@
 
          </div>
         <div class="w-full pb-20 pt-40 z-10 md:w-6xl md:pb-30 md:pt-40  " >
-            <div  class="w-full flex flex-col items-center gap-4" >
-                <h1 class="text-white font-bold text-3xl sm:text-5xl "> {{ job.title }} </h1>
+            <div  class="w-full flex flex-col items-center gap-4 text-center" >
+                <h1 class="text-white font-bold text-3xl sm:text-5xl text-center"> {{ job.title }} </h1>
                 <div class="flex flex-row gap-3"> 
                     <div class="flex flex-row gap-1.5"> <i class="bi bi-clock text-[#0A96DE] text-xl"></i> <p class="font-semibold text-white"> {{ job.job_type }}</p> </div>
                     <div class="flex flex-row gap-1.5"> <i class="bi bi-geo-alt text-[#0A96DE] text-xl"></i> <p class="font-semibold text-white" >{{ job.work_location }}</p> </div>
@@ -33,7 +33,7 @@
              <div class="w-full flex flex-col gap-2 border-b-1 border-[#DADADA] pb-10 pt-10 ">
                 <h2 class="font-bold text-[#0A96DE] text-3xl">Core Tasks</h2>
                 {% for task in job.core_tasks.splitlines %}
-                <li> {{ task }} </li> 
+                <li> {{ task }} </li>
                 {% endfor %}
              </div>
              <div class="w-full flex flex-col gap-2 border-b-1 border-[#DADADA] pb-10 pt-10 ">
@@ -60,7 +60,7 @@
              {% endif %}
              <div class="w-full flex flex-col gap-2 border-1 border-[#B3E3FC] bg-[#E7F6FE] p-5 rounded-xl ">
                 <h2 class="font-bold text-[#0A96DE] text-3xl">Contact Information</h2>
-                <div class="w-full flex justify-between items-end">
+                <div class="w-full flex flex-col  sm:flex sm:justify-between sm:items-end">
                   <div>
                      <div class="flex flex-row gap-1.5"> <i class="bi bi-building text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.company_name }}</p> </div>
                      <div class="flex flex-row gap-1.5"> <i class="bi bi-envelope text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.contact_info}} </p> </div>
