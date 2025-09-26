@@ -61,11 +61,11 @@
              <div class="w-full flex flex-col gap-2 border-1 border-[#B3E3FC] bg-[#E7F6FE] p-5 rounded-xl ">
                 <h2 class="font-bold text-[#0A96DE] text-3xl">Contact Information</h2>
                 <div class="w-full flex flex-col  sm:flex sm:flex-row sm:justify-between sm:items-end gap-4">
-                  <div class="w-full" >
+                  <div class="sm:w-auto " >
                      <div class="flex flex-row gap-1.5"> <i class="bi bi-building text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.company_name }}</p> </div>
                      <div class="flex flex-row gap-1.5"> <i class="bi bi-envelope text-[#0A96DE] text-xl"></i> <p class="font-bold text-md"> {{ job.contact_info}} </p> </div>
                   </div>
-                  <div class="w-full">
+                  <div class="sm:w-auto">
                      <a href="{{ job.job_link }}"  class="bg-[#0A96DE] w-full  hover:bg-[#0884c2] py-2 px-4  text-white rounded-md sm:w-auto text-center">
                      Contact Company
                      </a>
