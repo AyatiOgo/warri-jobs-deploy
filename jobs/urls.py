@@ -9,4 +9,5 @@ urlpatterns = [
     path('jobslist/', joblist, name='jobslist'),
     path('add-job/', add_job_view, name='add-job'),
     path('about-us/', aboutview, name='about'),
+    path('hire/', emp_job_view, name='hire'),
 ]

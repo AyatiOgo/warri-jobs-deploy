@@ -105,3 +105,6 @@ def aboutview(request):
 
     return render(request, 'about.html')
 
+def emp_job_view(request):
+
+    return render(request, 'emp-job-form.html')
